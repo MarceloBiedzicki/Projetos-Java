@@ -30,18 +30,19 @@ public class ServicoCep {
 
 
             Gson gson = new GsonBuilder()
-//                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE) //viaCep é minusculo.
                     .setPrettyPrinting()
                     .create();
 
             jsonCep = gson.fromJson(body, CepFromJson.class);
 
+            return jsonCep;
+
         } catch (IOException | RuntimeException | InterruptedException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Um cep inválido foi informado, tente novamente.");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Um cep inválido foi informado, tente novamente.");
         }
-        return jsonCep;
+        return null;
 
     }
 }

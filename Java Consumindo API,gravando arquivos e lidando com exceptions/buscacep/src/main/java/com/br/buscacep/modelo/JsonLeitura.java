@@ -1,4 +1,4 @@
-package com.br.buscacep.servico;
+package com.br.buscacep.modelo;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,8 +1,9 @@
 package com.br.buscacep.main;
 
 import com.br.buscacep.modelo.Cep;
+import com.br.buscacep.modelo.CepFromJson;
 import com.br.buscacep.servico.EscreveJson;
-import com.br.buscacep.servico.JsonLeitura;
+import com.br.buscacep.modelo.JsonLeitura;
 import com.br.buscacep.servico.ServicoCep;
 
 import java.io.File;
@@ -23,14 +24,17 @@ public class Main {
             if (busca.equalsIgnoreCase("sair")) {
                 break;
             }
-            if (ServicoCep.getJson(busca) != null) {
-                Cep cep = new Cep(ServicoCep.getJson(busca));
+
+            CepFromJson cepFromJson = ServicoCep.getJson(busca);
+            if (cepFromJson != null) {
+                Cep cep = new Cep(cepFromJson);
                 ceps.add(cep);
+                System.out.println(ceps.get(i));
+                i++;
             } else {
                 System.out.println("Você digitou um endereço inválido.");
             }
-            System.out.println(ceps.get(i));
-            i++;
+
 
         } while (true);
 
